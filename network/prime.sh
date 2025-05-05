@@ -1,20 +1,17 @@
-if [ -z "$1" ]; then
-echo "Usage: $0 <number>"
+if [ $# -ne 1 ]; then
+echo "Syntax Error: $0 <number>"
+else
+if [ $1 -le 1 ]; then
+echo "NOT Prime"
 exit 1
 fi
-num=$1
-if [ "$num" -lt 2 ]; then
-echo "$num is not a prime number"
+i=1
+while [ $i -lt `expr $1 / 2` ]; do
+i=`expr $i + 1`
+if [ `expr $1 % $i` -eq 0 ]; then
+echo "$1 is not a prime number" 
 exit 0
 fi
-i=2
-while [ $((i * i)) -le "$sum" ];do
-if [ $((num % i)) -eq 0 ]; then
-echo "$num is not a prime number"
-exit 0
-fi
-i=$((i +1))
 done
-echo "$num is a prime number"
-
-
+echo "$1 is a prime number"
+fi
