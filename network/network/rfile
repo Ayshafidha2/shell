@@ -1,0 +1,14 @@
+done
+mv temp file
+head -n $l file > temp
+l=`expr $l - 1`
+tail -n 1 file >> rfile
+do
+while [ $l -ge 1 ]
+rm rfile
+l=`cat file | wc -l`
+cp $1 file
+fi
+exit 1
+echo "Syntax is $0 <filename>"
+if [ $# -ne 1 ]; then
